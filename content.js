@@ -90,8 +90,7 @@
 
       browserAPI.runtime.sendMessage({
         action: 'download',
-        url: downloadUrl,
-        filename: `torrent-${torrentId}.torrent`
+        torrentId: torrentId
       })
       .then(function(response) {
         clearTimeout(timeoutId);
@@ -109,7 +108,9 @@
         } else {
           apiBtn.classList.remove('loading');
           apiBtn.classList.add('error');
-          apiBtn.innerHTML = '<span class="ico_download"></span> Erreur - Réessayer';
+          const msg = (response && response.message) ? response.message : 'Erreur - Réessayer';
+          const code = (response && response.code) ? ` (code: ${response.code})` : '';
+          apiBtn.innerHTML = `<span class="ico_download"></span> ${msg}${code}`;
 
           setTimeout(function() {
             apiBtn.classList.remove('error');

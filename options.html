@@ -73,10 +73,21 @@
 
   <div class="setting-group">
     <label for="passkey">Passkey YGG API :</label>
-    <input type="text" id="passkey" placeholder="Entrez votre passkey ici">
+    <div style="display:flex; gap:8px; align-items:center;">
+      <input type="password" id="passkey" placeholder="Entrez votre passkey ici" style="flex:1;">
+      <label style="font-size:12px; color:#555; display:flex; align-items:center; gap:4px;">
+        <input type="checkbox" id="toggle-passkey"> Afficher
+      </label>
+    </div>
     <div class="help-text">
       Votre passkey est utilisée pour télécharger les torrents via ygg-api. Vous la trouverez dans votre profil YGGTorrent.
     </div>
+  </div>
+
+  <div class="setting-group">
+    <label for="baseUrl">Base URL YGG-API :</label>
+    <input type="text" id="baseUrl" placeholder="https://yggapi.eu" value="https://yggapi.eu">
+    <div class="help-text">Modifiez uniquement si un miroir est nécessaire.</div>
   </div>
 
   <button class="save-btn" id="save">Enregistrer</button>
