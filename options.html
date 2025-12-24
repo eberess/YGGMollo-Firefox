@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Paramètres YGGMollo</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .setting-group {
+      margin-bottom: 25px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #555;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #43e97b;
+    }
+    .save-btn {
+      background: linear-gradient(135deg, #43e97b 0%, #38c172 100%);
+      color: #000;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .save-btn:hover {
+      filter: brightness(1.1);
+    }
+    .status {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 4px;
+      display: none;
+    }
+    .status.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    .help-text {
+      font-size: 12px;
+      color: #888;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Paramètres YGGMollo</h1>
+
+  <div class="setting-group">
+    <label for="passkey">Passkey YGG API :</label>
+    <input type="text" id="passkey" placeholder="Entrez votre passkey ici">
+    <div class="help-text">
+      Votre passkey est utilisée pour télécharger les torrents via ygg-api. Vous la trouverez dans votre profil YGGTorrent.
+    </div>
+  </div>
+
+  <button class="save-btn" id="save">Enregistrer</button>
+
+  <div class="status" id="status"></div>
+
+  <script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "YGGMollo",
+  "version": "1.0.0",
+  "description": "Ajoute un bouton télécharger via YGG-API sur les pages YGGTorrent",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.yggtorrent.org/torrent/*"
+      ],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*.webp"],
+      "matches": [
+        "*://*.yggtorrent.org/*"
+      ]
+    }
+  ],
+  "permissions": ["storage", "downloads"],
+  "options_page": "options.html",
+  "background": {
+    "service_worker": "background.js"
+  }
+}

@@ -1,0 +1,46 @@
+/* YGGSearch - Styles for injected links */
+
+.yggsearch-links {
+  display: inline-flex;
+  gap: 8px;
+  margin-left: 12px;
+  align-items: center;
+  vertical-align: middle;
+}
+
+/* Custom button styling */
+.yggsearch-api-btn {
+  display: inline-block;
+  margin-left: 8px;
+  background: linear-gradient(135deg, #43e97b 0%, #38c172 100%) !important;
+  color: #000 !important;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.yggsearch-api-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(67, 233, 123, 0.3);
+}
+
+/* Loading animation */
+.yggsearch-api-btn.loading {
+  opacity: 0.8;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Error state */
+.yggsearch-api-btn.error {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%) !important;
+  color: #fff !important;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
