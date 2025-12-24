@@ -1,10 +1,18 @@
 <p align="center">
-  <img src="icons/icon.png" alt="YGGMollo" width="128">
+  <img src="icons/icon.png" alt="YGGMollo" width="128">
 </p>
 
-# YGGMollo
+# YGGMollo WebExtension (Portage Firefox)
 
-Extension Chrome qui ajoute un bouton Télécharger via [Ygg-API](https://yggapi.eu) sur les pages YGGTorrent.
+**Extension Firefox** qui ajoute un bouton "Télécharger via [Ygg-API](https://yggapi.eu)" sur les pages YGGTorrent. Ce projet est un fork de l'extension Chrome originale.
+
+---
+
+### 🙏 Attribution et Remerciements
+
+Ce projet est un **fork** et un portage de l'extension Chrome originale **YGGMollo**, initialement créée par **Almottier** ([almottier/YGGMollo](https://github.com/almottier/YGGMollo)). Nous tenons à remercier l'auteur pour son excellent travail initial sous licence MIT.
+
+---
 
 Il n'y a donc plus de limite de temps ni sur le nombre de torrents téléchargés.
 
@@ -18,26 +26,24 @@ Il n'y a donc plus de limite de temps ni sur le nombre de torrents téléchargé
 
 ## Installation
 
-### Chrome Web Store
+### Firefox Add-ons (AMO)
 
 *(Prochainement)*
 
-### Installation manuelle
+### Installation manuelle pour le développement
 
-1. Téléchargez le projet
-2. Ouvrez `chrome://extensions/`
-3. Activez le "Mode développeur"
-4. Cliquez sur "Charger l'extension non empaquetée"
-5. Sélectionnez le dossier du projet
+1. Téléchargez le projet (ou clonez le dépôt `yggmollo-firefox`).
+2. Ouvrez Firefox et tapez `about:debugging` dans la barre d'adresse.
+3. Allez dans la section **"Ce Firefox"**.
+4. Cliquez sur le bouton **"Charger un module complémentaire temporaire..."**.
+5. Sélectionnez le dossier racine de votre projet (`yggmollo-firefox`).
 
 ## Développement
 
 ### Build
 ```bash
-make build    # Crée build/yggmollo-v1.0.0.zip
-make clean    # Nettoie le dossier build
+make build    # Crée build/yggmollo-firefox-v1.0.0.zip (vérifiez les scripts de 'make' pour la compatibilité)
+make clean    # Nettoie le dossier build
 ```
-
-## Licence
-
+### Licence
 MIT
