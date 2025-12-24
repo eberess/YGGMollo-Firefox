@@ -2,6 +2,9 @@
 build/
 *.zip
 
+# AMO signing artifacts
+.amo-upload-uuid
+
 # OS files
 .DS_Store
 .DS_Store?
