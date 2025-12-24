@@ -3,6 +3,8 @@
   "name": "YGGMollo",
   "version": "1.0.0",
   "description": "Ajoute un bouton télécharger via YGG-API sur les pages YGGTorrent",
+  "author": "AB",
+  "homepage_url": "https://github.com/eberess/YGGMollo-Firefox",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
@@ -11,7 +13,12 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*.yggtorrent.org/torrent/*"
+        "*://*.yggtorrent.org/torrent/*",
+        "*://*.yggtorrent.com/torrent/*",
+        "*://*.yggtorrent.si/torrent/*",
+        "*://*.yggtorrent.re/torrent/*",
+        "*://*.yggtorrent.li/torrent/*",
+        "*://*.yggtorrent.gg/torrent/*"
       ],
       "js": ["content.js"],
       "css": ["styles.css"],
@@ -22,13 +29,30 @@
     {
       "resources": ["assets/*.webp"],
       "matches": [
-        "*://*.yggtorrent.org/*"
+        "*://*.yggtorrent.org/*",
+        "*://*.yggtorrent.com/*",
+        "*://*.yggtorrent.si/*",
+        "*://*.yggtorrent.re/*",
+        "*://*.yggtorrent.li/*",
+        "*://*.yggtorrent.gg/*"
       ]
     }
   ],
-  "permissions": ["storage", "downloads"],
-  "options_page": "options.html",
+  "permissions": [
+    "storage",
+    "downloads"
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
   "background": {
-    "service_worker": "background.js"
+    "scripts": ["background.js"]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "ab@wilmoredynamics.com",
+      "strict_min_version": "109.0"
+    }
   }
 }

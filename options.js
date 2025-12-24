@@ -1,15 +1,17 @@
-// Options page script
+const browserAPI = typeof browser !== 'undefined' ? browser : chrome;
 
-// Load saved settings
 document.addEventListener('DOMContentLoaded', function() {
-  chrome.storage.sync.get(['passkey'], function(result) {
-    if (result.passkey) {
-      document.getElementById('passkey').value = result.passkey;
-    }
-  });
+  browserAPI.storage.sync.get(['passkey'])
+    .then(function(result) {
+      if (result.passkey) {
+        document.getElementById('passkey').value = result.passkey;
+      }
+    })
+    .catch(function(error) {
+      console.error('[YGGMollo] Error loading settings:', error);
+    });
 });
 
-// Save settings
 document.getElementById('save').addEventListener('click', function() {
   const passkey = document.getElementById('passkey').value.trim();
 
@@ -18,10 +20,15 @@ document.getElementById('save').addEventListener('click', function() {
     return;
   }
 
-  chrome.storage.sync.set({
+  browserAPI.storage.sync.set({
     passkey: passkey
-  }, function() {
+  })
+  .then(function() {
     showStatus('Paramètres enregistrés avec succès !', true);
+  })
+  .catch(function(error) {
+    console.error('[YGGMollo] Error saving settings:', error);
+    showStatus('Erreur lors de la sauvegarde', false);
   });
 });
 

@@ -1,7 +1,7 @@
-# YGGMollo Makefile
+# YGGMollo Firefox Makefile
 
 # Variables
-EXTENSION_NAME = yggmollo
+EXTENSION_NAME = yggmollo-firefox
 VERSION = 1.0.0
 BUILD_DIR = build
 ZIP_NAME = $(EXTENSION_NAME)-v$(VERSION).zip

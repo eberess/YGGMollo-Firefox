@@ -1,25 +1,23 @@
-// Background script for YGGMollo
+const browserAPI = typeof browser !== 'undefined' ? browser : chrome;
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+browserAPI.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.action === 'openOptions') {
-    chrome.runtime.openOptionsPage();
+    browserAPI.runtime.openOptionsPage();
   } else if (request.action === 'download') {
-    // Download the torrent file
-    chrome.downloads.download({
+    browserAPI.downloads.download({
       url: request.url,
       filename: request.filename,
       saveAs: false
-    }, function(downloadId) {
-      // Check for errors
-      if (chrome.runtime.lastError) {
-        console.error('[YGGMollo] Download error:', chrome.runtime.lastError);
-        sendResponse({ success: false, error: chrome.runtime.lastError.message });
-      } else {
-        console.log('[YGGMollo] Download started:', downloadId);
-        sendResponse({ success: true, downloadId: downloadId });
-      }
+    })
+    .then(function(downloadId) {
+      console.log('[YGGMollo] Download started:', downloadId);
+      sendResponse({ success: true, downloadId: downloadId });
+    })
+    .catch(function(error) {
+      console.error('[YGGMollo] Download error:', error);
+      sendResponse({ success: false, error: error.message || String(error) });
     });
-    // Keep the message channel open for sendResponse
+    
     return true;
   }
 });
