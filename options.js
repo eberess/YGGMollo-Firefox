@@ -1,7 +1,14 @@
+// @ts-nocheck
+
 const browserAPI = typeof browser !== 'undefined' ? browser : chrome;
 
 document.addEventListener('DOMContentLoaded', function() {
-  browserAPI.storage.sync.get({ passkey: null, baseUrl: 'https://yggapi.eu' })
+  browserAPI.storage.sync.get({ 
+    passkey: null, 
+    baseUrl: 'https://yggapi.eu',
+    stealthMode: true,
+    showNotifications: false
+  })
     .then(function(result) {
       if (result.passkey) {
         document.getElementById('passkey').value = result.passkey;
@@ -9,6 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
       if (result.baseUrl) {
         document.getElementById('baseUrl').value = result.baseUrl;
       }
+      document.getElementById('stealthMode').checked = result.stealthMode !== false;
+      document.getElementById('showNotifications').checked = result.showNotifications === true;
     })
     .catch(function(error) {
       console.error('[YGGMollo] Error loading settings:', error);
@@ -18,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
 document.getElementById('save').addEventListener('click', function() {
   const passkey = document.getElementById('passkey').value.trim();
   const baseUrl = document.getElementById('baseUrl').value.trim() || 'https://yggapi.eu';
+  const stealthMode = document.getElementById('stealthMode').checked;
+  const showNotifications = document.getElementById('showNotifications').checked;
 
   if (!passkey) {
     showStatus('Veuillez entrer une passkey', false);
@@ -30,7 +41,9 @@ document.getElementById('save').addEventListener('click', function() {
 
   browserAPI.storage.sync.set({
     passkey: passkey,
-    baseUrl: baseUrl.replace(/\/$/, '')
+    baseUrl: baseUrl.replace(/\/$/, ''),
+    stealthMode: stealthMode,
+    showNotifications: showNotifications
   })
   .then(function() {
     showStatus('Paramètres enregistrés avec succès !', true);

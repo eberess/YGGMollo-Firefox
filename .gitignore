@@ -27,3 +27,6 @@ test/
 # Package files
 *.crx
 *.pem
+
+# Doc
+yggapi.json

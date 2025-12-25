@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "YGGMollo",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Ajoute un bouton télécharger via YGG-API sur les pages YGGTorrent",
   "author": "AB",
   "homepage_url": "https://github.com/eberess/YGGMollo-Firefox",
